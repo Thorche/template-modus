@@ -1,0 +1,350 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "retina-sprites";
+
+// Includes Fonts
+@include font-face("CrimsonText-Bold" ,font_files("CrimsonText-Bold.woff", "CrimsonText-Bold.ttf", "CrimsonText-Bold.svg"),"CrimsonText-Bold.eot", 700, bold);
+@include font-face("CrimsonText-BoldItalic" ,font_files("CrimsonText-BoldItalic.woff", "CrimsonText-BoldItalic.ttf", "CrimsonText-BoldItalic.svg"),"CrimsonText-BoldItalic.eot", 700, italic);
+@include font-face("CrimsonText-Italic" ,font_files("CrimsonText-Italic.woff", "CrimsonText-Italic.ttf", "CrimsonText-Italic.svg"),"CrimsonText-Italic.eot", 700, italic);
+@include font-face("CrimsonText-Roman" ,font_files("CrimsonText-Roman.woff", "CrimsonText-Roman.ttf", "CrimsonText-Roman.svg"),"CrimsonText-Roman.eot", 700, normal);
+@include font-face("CrimsonText-Semibold" ,font_files("CrimsonText-Semibold.woff", "CrimsonText-Semibold.ttf", "CrimsonText-Semibold.svg"),"CrimsonText-Semibold.eot", 700, bold);
+@include font-face("Montserrat-Bold" ,font_files("Montserrat-Bold.woff", "Montserrat-Bold.ttf", "Montserrat-Bold.svg"),"Montserrat-Bold.eot", 700, bold);
+@include font-face("Montserrat-Roman" ,font_files("Montserrat-Regular.woff", "Montserrat-Regular.ttf", "Montserrat-Regular.svg"),"Montserrat-Regular.eot", 700, normal);
+
+
+@mixin img {
+  display:block;
+  z-index:100;
+}
+
+@mixin current {
+  color: #00c7fc;
+}
+
+@mixin crimReg{
+  font-family: "CrimsonText-Roman";
+}
+
+@mixin crimBold{
+  font-family: "Montserrat-Bold";
+}
+
+@mixin montReg{
+  font-family: "Montserrat-Roman";
+}
+
+@mixin crimItal{
+  font-family: "CrimsonText-BoldItalic";
+}
+
+@mixin border{
+  border:2px #00c7fc;
+}
+
+@mixin centrer{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+$mainColor : #000;
+/* ici on va choisir de rendre la couleur principale plus lumineuse de 10% */
+$mainColorLighten : lighten($mainColor, 30%);
+$mainColorLighter : lighten($mainColor, 90%);
+$mainColorMaxLighter: lighten($mainColor,100%);
+/* ici on va choisir de rendre la couleur principale plus lumineuse de 10% */
+$mainColorDarken : darken($mainColor, 10%);
+$mainColorDarker : darken($mainColor, 90%);
+
+
+
+.logo{
+  @include use-sprite('logo');
+  @include img;
+  float:left;
+}
+
+.container {
+  width:1020px;
+  margin: auto;
+}
+
+.nav-bar{
+  width: 100%;
+  padding:15px;
+  height:38px;
+  background: white;
+  position: fixed;
+}
+
+ul.menu-top{
+  float: right;
+  margin-top: 15px;
+  text-align:right;
+  width: 50%;
+  display: block;
+  li{
+    display:inline-block;
+    font-size: 0.8em;
+    margin-left: 1%;
+    @include crimBold;
+    color: $mainColorLighten;
+  }
+}
+
+.clear{
+  display:block;
+  clear: both;
+
+}
+
+.wrap{
+  padding-top:68px;
+}
+
+.section1{
+  display: block;
+  background:$mainColor;
+  color: white;
+  text-align: center;
+  height:580px;
+  .section-home{
+    padding-top:225px;
+    .description{
+      @include crimBold;
+      font-size:0.6em;
+    }
+    h1{
+      padding:25px;
+      @include montReg;
+      font-size:2.5em;
+    }
+    .button{
+      border: 1px solid #fff;
+      padding: 10px 35px;
+      letter-spacing: 3px;
+      font-size: 0.6em;
+      @include montReg();
+      @include border-radius(5px 5px)
+    }
+    .button-blue{
+      @extend .button;
+      color:white;
+      background: #00c7fc;
+      margin-left:25px;
+    }
+  }
+  .continue{
+    @include use-sprite('down');
+    @include img;
+    margin-top:200px;
+    margin-left:49%
+  }
+}
+
+.section2{
+  padding: 120px;
+  clear:both;
+  background-color: $mainColorLighter;
+  display: block;
+  text-align: center;
+
+  h2{
+    text-transform: uppercase;
+    @include montReg();
+    font-size:1.1em;
+  }
+  p{
+    @include crimReg();
+    text-align: center;
+    font-size: 0.95em;
+  }
+}
+
+.separator{
+  margin: 25px;
+  @include use-sprite('separator');
+  @include img;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.section3 {
+  height: 480px;
+  clear: both;
+  background-color: $mainColorLighten;
+  display: block;
+  text-align: center;
+  width: 100%;
+  .col {
+    width: 16.666%;
+    background-color: #000;
+    height: 480px;
+    float: left;
+    position:relative;
+    .txt {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    &:hover {
+      .txt {
+        opacity: 1;
+        background-color: #00c7fc;
+      }
+
+    }
+    #{headings(3)} {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 1.5em;
+      color: #ffffff;;
+    }
+    p {
+      margin-top: 5%;
+      font-family: 'Oswald', sans-serif;
+      line-height: 1em;
+      color: #fff;
+    }
+  }
+
+}
+
+.section4{
+  padding: 120px;
+  clear:both;
+  background-color: $mainColorLighter;
+  display: block;
+  text-align: center;
+  .miniwrap{
+    margin-left:auto;
+    margin-right:auto;
+    .service {
+      background-color:white;
+      width: 12.111%;
+      display:inline-block;
+      margin-left:2%;
+      text-align:center;
+      padding: 55px;
+      h3{
+        @include montReg;
+        margin-bottom: 30px;
+      }
+      p{
+        @include crimReg();
+      }
+    }
+  }
+}
+
+.screen{
+  @include use-sprite('screen');
+  @include img;
+  @include centrer;
+}
+.plug{
+  @include use-sprite('plug');
+  @include centrer;
+  @include img;
+}
+.pencil{
+  @include use-sprite('pencil');
+  @include centrer;
+  @include img;
+}
+
+.separatorsm{
+  background-color:#00c7fc;
+  width: 50px;
+  height: 3px;
+  border:0px;
+  margin: 15px auto;
+}
+
+.section5{
+  padding: 120px;
+  clear:both;
+  background-color: $mainColorMaxLighter;
+  display: block;
+  text-align: center;
+  h2{
+    @include montReg;
+    margin-bottom: 30px;
+  }
+  p{
+    font-size:0.95em;
+    @include crimReg();
+  }
+  .quote {
+    color: $mainColorLighten;
+    @include crimItal;
+    font-size: 0.85em;
+    margin-top: 20px;
+  }
+}
+.client {
+  padding-top: 100px;
+  width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  img {
+    margin-right: 6%;
+    margin-left: 6%;
+  }
+}
+
+.section6 {
+  display: block;
+  background: $mainColor;
+  color: white;
+  text-align: center;
+  padding: 60px;
+  .contact{
+    background-color:$mainColor;
+    width: 35%;
+    padding: 45px;
+    display:inline-block;
+    height: 250px;
+    text-align:center;
+    vertical-align:top;
+    border: #fff solid 1.2px;
+    @include border-radius(2px);
+    h2{
+      padding: 25px;
+      @include crimBold;
+    }
+  }
+  .about{
+    @extend .contact;
+  }
+}
+
+.blank {
+  padding-bottom: 25px;
+}
+
+footer{
+  background-color: #00c7fc;
+  height: 80px;
+  .copyright {
+    color: #fff;
+    padding-top: 37px;
+    font-size: 0.8em;
+  }
+    .social{
+        float:right;
+      margin-top:-20px;
+      div{
+        display:inline-block;
+      }
+    }
+  .facebook{
+    @include use-sprite('icon-fb');
+  }
+  .twitter{
+  @include use-sprite('icon-twitter');
+  }
+  .dribbler{
+    @include use-sprite('icon-dribbbble');
+
+  }
+}
